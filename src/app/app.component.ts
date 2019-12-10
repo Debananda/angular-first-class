@@ -8,6 +8,7 @@ import { Component } from "@angular/core";
 export class AppComponent {
   title = "angular-first-class";
   list: string[] = ["one", "two", "three"];
+  price: number = 250;
   changeTitle(value: string) {
     this.title = value;
   }
