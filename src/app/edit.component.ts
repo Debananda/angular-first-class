@@ -33,7 +33,7 @@ import {
 export class EditComponent {
   @Input() inputText: string;
   @Input() inputLabel: string;
-  @ViewChild("lblText", { static: false }) lblText: ElementRef;
+  @ViewChild("lblText", { static: true }) lblText: ElementRef;
   @Output() changeText = new EventEmitter<string>();
   constructor(private renderer: Renderer2) {}
   editText(value: string) {

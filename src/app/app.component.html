@@ -7,16 +7,24 @@
   ></app-edit>
   <ul>
     <!-- <li *ngFor="let t of list; let i = index">
-      <span [ngClass]="{ 'alert-danger': i % 2 !== 0 }" class="alert">
+      <span
+        [ngClass]="{ 'alert-danger': i % 2 !== 0 }"
+        [ngStyle]="{ color: i % 2 !== 0 ? 'red' : 'blue' }"
+        class="alert"
+        *ngIf="i % 2 !== 0; else evenEl"
+      >
         {{ t }}</span
       >
+      <ng-template #evenEl>
+        <span>Even Elements</span>
+      </ng-template>
     </li> -->
     <li app-highlight *ngFor="let t of list; let i = index" [ngSwitch]="i % 2">
-      <div *ngSwitchCase="0">{{ t }} odd</div>
-      <div *ngSwitchDefault>{{ t }} even</div>
+      <div *ngSwitchCase="0">{{ t }} even</div>
+      <div *ngSwitchDefault>{{ t }} odd</div>
     </li>
   </ul>
   <div app-highlight>Highlight Me</div>
-  <h1>{{ price | appUnit: "US" }}</h1>
+  <h1>{{ price | appUnit: "IN" }}</h1>
   <h1>{{ price }}</h1>
 </div>
