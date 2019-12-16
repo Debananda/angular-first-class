@@ -5,7 +5,17 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
-  Renderer2
+  Renderer2,
+  OnInit,
+  OnDestroy,
+  OnChanges,
+  DoCheck,
+  SimpleChanges,
+  AfterViewInit,
+  AfterViewChecked,
+  AfterContentChecked,
+  AfterContentInit,
+  SimpleChange
 } from "@angular/core";
 
 @Component({
@@ -30,10 +40,11 @@ import {
     `
   ]
 })
-export class EditComponent {
+export class EditComponent
+  implements OnChanges, OnInit, DoCheck, OnDestroy, AfterViewInit {
   @Input() inputText: string;
   @Input() inputLabel: string;
-  @ViewChild("lblText", { static: true }) lblText: ElementRef;
+  @ViewChild("lblText", { static: false }) lblText: ElementRef;
   @Output() changeText = new EventEmitter<string>();
   constructor(private renderer: Renderer2) {}
   editText(value: string) {
@@ -44,5 +55,23 @@ export class EditComponent {
       "yellow"
     );
     this.changeText.emit(value);
+  }
+
+  ngOnChanges(changedObj: SimpleChanges) {
+    console.log(changedObj);
+  }
+
+  ngOnInit() {
+    console.log("In Init", this.lblText);
+  }
+
+  ngDoCheck() {
+    console.log("In CHeck");
+  }
+  ngOnDestroy() {
+    console.log("In Destroy");
+  }
+  ngAfterViewInit() {
+    console.log("In After View Init", this.lblText);
   }
 }

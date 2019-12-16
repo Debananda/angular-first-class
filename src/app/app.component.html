@@ -1,9 +1,13 @@
 <div class="container-fluid">
   <h1 class="text-center">{{ title }}</h1>
+  <button class="btn btn-primary" (click)="toggleShowEdit()">
+    Toggle Show Edit
+  </button>
   <app-edit
     [inputText]="title"
     inputLabel="Title"
     (changeText)="changeTitle($event)"
+    *ngIf="showEdit"
   ></app-edit>
   <ul>
     <!-- <li *ngFor="let t of list; let i = index">
@@ -27,4 +31,9 @@
   <div app-highlight>Highlight Me</div>
   <h1>{{ price | appUnit: "IN" }}</h1>
   <h1>{{ price }}</h1>
+  <app-collapsible [header]="DummyHeader">
+    <div #dummyContent>
+      This is dummy Text
+    </div>
+  </app-collapsible>
 </div>

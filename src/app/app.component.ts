@@ -9,7 +9,11 @@ export class AppComponent {
   title = "angular-first-class";
   list: string[] = ["one", "two", "three"];
   price: number = 250.2;
+  showEdit = true;
   changeTitle(value: string) {
     this.title = value;
+  }
+  toggleShowEdit() {
+    this.showEdit = !this.showEdit;
   }
 }
