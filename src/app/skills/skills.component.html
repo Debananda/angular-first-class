@@ -1,0 +1,27 @@
+<form [formGroup]="skillsForm" (ngSubmit)="save()">
+  <div formArrayName="userSkills">
+    <div
+      *ngFor="let skillControl of skills; let i = index"
+      [formGroupName]="i"
+      class="row"
+    >
+      <input
+        type="text"
+        class="form-control"
+        formControlName="skill"
+        class="col-md-5"
+      />
+      <input
+        type="number"
+        class="form-control"
+        formControlName="lastUsed"
+        class="col-md-5"
+      />
+      <div class="col-md-2">
+        <button class="btn btn-danger mr-1" (click)="removeSkill(i)">-</button>
+        <button class="btn btn-primary" (click)="addSkill()">+</button>
+      </div>
+    </div>
+  </div>
+  <input type="submit" class="btn btn-block btn-success" value="Save" />
+</form>
